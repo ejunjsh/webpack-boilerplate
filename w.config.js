@@ -7,7 +7,7 @@ var version = require('./package.json').version;
 
 
 // 程序入口
-var entry =  __dirname + '/src/index.js';
+var entry =  __dirname + '/app.js';
 
 
 // 生成source-map追踪js错误
@@ -19,27 +19,32 @@ var loaders = [
     {
       test: /\.(json)$/,
       exclude: /node_modules/,
-      loader: 'json',
+      loader: 'json-loader',
     },
     {
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
-      loader: 'babel',
+      loader: 'babel-loader',
+      options: {
+        presets: [
+            "es2015", "react"
+        ]
+    }
     },
     {
       test: /\.(?:png|jpg|gif)$/,
-      loader: 'url?limit=8192', //小于8k,内嵌;大于8k生成文件
+      loader: 'url-loader?limit=8192', //小于8k,内嵌;大于8k生成文件
     },
     {
       test: /\.css/,
-      loader: ExtractTextPlugin.extract('style', 'css'),
+      loader: ExtractTextPlugin.extract('css-loader'),
     }
 ];
 
 // dev plugin
 var devPlugins =  [
   new CopyWebpackPlugin([
-    { from: './public/favorite.ico' },
+    { from: './public/favicon.ico' },
   ]),
   // HTML 模板
   new HtmlWebpackPlugin({
@@ -48,7 +53,7 @@ var devPlugins =  [
   // 热更新
   new webpack.HotModuleReplacementPlugin(),
   // 允许错误不打断程序, 仅开发模式需要
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
   // 打开浏览器页面
   new OpenBrowserPlugin({
     url: 'http://127.0.0.1:8080/'
@@ -67,7 +72,7 @@ var productionPlugins = [
   }),
   // 复制
   new CopyWebpackPlugin([
-    { from: './public/favorite.ico' },
+    { from: './public/favicon.ico' },
   ]),
   // HTML 模板
   new HtmlWebpackPlugin({
@@ -87,8 +92,7 @@ var productionPlugins = [
 
 // dev server
 var devServer = {
-  contentBase: './dev',
-  colors: true,
+  contentBase: './',
   historyApiFallback: false,
   port: 8080, // defaults to "8080"
   hot: true, // Hot Module Replacement
@@ -99,7 +103,6 @@ var devServer = {
 module.exports = {
   entry: entry,
   devtool: devtool,
-  output: output,
   loaders: loaders,
   devPlugins: devPlugins,
   productionPlugins: productionPlugins,

@@ -5,13 +5,12 @@ module.exports = {
   devtool: config.devtool,
   entry: config.entry,
   output: {
-    path: __dirname + '/dev',
+    path: __dirname + '/',
     filename: 'app.js',
   },
   module: {
     loaders: config.loaders
   },
   plugins: config.devPlugins,
-  devServer: config.devServer,
-  postcss: config.postcss
+  devServer: config.devServer
 };

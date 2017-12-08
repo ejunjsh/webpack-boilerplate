@@ -8,10 +8,8 @@ module.exports = {
     path: __dirname + '/build',
     filename: 'app-' + config.version+'.js',
   },
-  eslint: config.eslint,
   module: {
     loaders: config.loaders
   },
   plugins: config.productionPlugins,
-  postcss: config.postcss
 };
