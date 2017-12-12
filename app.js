@@ -1,1 +1,1 @@
-import * as _ from "./src/pages/index/index.js"
+import * as _ from "./src/pages/index.js"
