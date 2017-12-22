@@ -7,7 +7,7 @@ var version = require('./package.json').version;
 
 
 // 程序入口
-var entry =  __dirname + '/app.js';
+var entry =  __dirname + '/src/index.js';
 
 
 // 生成source-map追踪js错误
