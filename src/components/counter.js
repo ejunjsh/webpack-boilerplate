@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import empty from "../assets/empty.png"
 
 export default class Counter extends Component {
     render() {
@@ -9,7 +8,6 @@ export default class Counter extends Component {
         <div>
           <span>{value}</span>
           <button onClick={onIncreaseClick}>Increase</button>
-          <img src={empty}/>
         </div>
       )
     }
