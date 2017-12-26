@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {increaseAction} from '../actions/index'
 import Counter from "../components/counter"
 import Avatar from "../components/avatar"
+import { DatePicker } from 'antd'
+import 'antd/dist/antd.css'
 
 
 class App extends Component {
@@ -13,6 +15,7 @@ class App extends Component {
           <div>
              <Counter onIncreaseClick={this.props.onIncreaseClick} value={this.props.value} />
              <Avatar/>
+             <DatePicker />
           </div>
         )
       }
