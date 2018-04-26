@@ -1,12 +1,17 @@
 # webpack-boilerplate
 a boilerplate using webpack react and redux.
 
-## run
+## install
 ````
-npm run dev
+npm install
 ````
 
 ## build
 ````
 npm run build
+````
+
+## run
+````
+npm run dev
 ````
